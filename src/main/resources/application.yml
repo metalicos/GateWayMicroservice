@@ -1,0 +1,9 @@
+server:
+  port: 9090
+spring:
+  application:
+    name: cyber-done-api-gateway-microservice
+springdoc:
+  swagger-ui:
+    use-root-path: true
+    display-query-params: true

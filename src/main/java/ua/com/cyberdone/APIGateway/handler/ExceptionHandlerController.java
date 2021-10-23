@@ -42,7 +42,8 @@ public class ExceptionHandlerController {
 
     @ExceptionHandler(NoHandlerFoundException.class)
     public ResponseEntity<RestError> noHandlerFoundException(NoHandlerFoundException exception) {
-        log.info(HttpStatus.NOT_FOUND.getReasonPhrase());
+        log.error("NoHandlerFoundException: ", exception);
+        log.error(HttpStatus.NOT_FOUND.getReasonPhrase());
         return new ResponseEntity<>(RestError.builder()
                 .error(HttpStatus.NOT_FOUND.getReasonPhrase())
                 .title(NOT_FOUND_MSG)
@@ -52,7 +53,8 @@ public class ExceptionHandlerController {
 
     @ExceptionHandler(NullPointerException.class)
     public ResponseEntity<RestError> noHandlerFoundException(NullPointerException exception) {
-        log.info(HttpStatus.NO_CONTENT.getReasonPhrase());
+        log.error("NullPointerException: ", exception);
+        log.error(HttpStatus.NO_CONTENT.getReasonPhrase());
         return new ResponseEntity<>(RestError.builder()
                 .error(HttpStatus.NO_CONTENT.getReasonPhrase())
                 .title(NO_CONTENT_MSG)
@@ -62,7 +64,8 @@ public class ExceptionHandlerController {
 
     @ExceptionHandler(AccessDeniedException.class)
     public ResponseEntity<RestError> noHandlerFoundException(AccessDeniedException exception) {
-        log.info(HttpStatus.FORBIDDEN.getReasonPhrase());
+        log.error("AccessDeniedException: ", exception);
+        log.error(HttpStatus.FORBIDDEN.getReasonPhrase());
         return new ResponseEntity<>(RestError.builder()
                 .error(HttpStatus.FORBIDDEN.getReasonPhrase())
                 .title(ACCESS_DENIED_MSG)
@@ -72,7 +75,8 @@ public class ExceptionHandlerController {
 
     @ExceptionHandler(AuthenticationException.class)
     public ResponseEntity<RestError> noHandlerFoundException(AuthenticationException exception) {
-        log.info(HttpStatus.UNAUTHORIZED.getReasonPhrase());
+        log.error("AuthenticationException: ", exception);
+        log.error(HttpStatus.UNAUTHORIZED.getReasonPhrase());
         return new ResponseEntity<>(RestError.builder()
                 .error(HttpStatus.UNAUTHORIZED.getReasonPhrase())
                 .title(UNAUTHORIZED_MSG)
@@ -82,7 +86,8 @@ public class ExceptionHandlerController {
 
     @ExceptionHandler(ExpiredJwtException.class)
     public ResponseEntity<RestError> noHandlerFoundException(ExpiredJwtException exception) {
-        log.info(HttpStatus.UNAUTHORIZED.getReasonPhrase());
+        log.error("ExpiredJwtException: ", exception);
+        log.error(HttpStatus.UNAUTHORIZED.getReasonPhrase());
         return new ResponseEntity<>(RestError.builder()
                 .error(HttpStatus.UNAUTHORIZED.getReasonPhrase())
                 .title(UNAUTHORIZED_MSG)
@@ -92,7 +97,8 @@ public class ExceptionHandlerController {
 
     @ExceptionHandler(SignatureException.class)
     public ResponseEntity<RestError> noHandlerFoundException(SignatureException exception) {
-        log.info(HttpStatus.UNAUTHORIZED.getReasonPhrase());
+        log.error("SignatureException: ", exception);
+        log.error(HttpStatus.UNAUTHORIZED.getReasonPhrase());
         return new ResponseEntity<>(RestError.builder()
                 .error(HttpStatus.UNAUTHORIZED.getReasonPhrase())
                 .title(UNAUTHORIZED_MSG)
@@ -102,7 +108,8 @@ public class ExceptionHandlerController {
 
     @ExceptionHandler(MalformedJwtException.class)
     public ResponseEntity<RestError> noHandlerFoundException(MalformedJwtException exception) {
-        log.info(HttpStatus.UNAUTHORIZED.getReasonPhrase());
+        log.error("MalformedJwtException: ", exception);
+        log.error(HttpStatus.UNAUTHORIZED.getReasonPhrase());
         return new ResponseEntity<>(RestError.builder()
                 .error(HttpStatus.UNAUTHORIZED.getReasonPhrase())
                 .title(UNAUTHORIZED_MSG)
@@ -112,7 +119,8 @@ public class ExceptionHandlerController {
 
     @ExceptionHandler(UnsupportedJwtException.class)
     public ResponseEntity<RestError> noHandlerFoundException(UnsupportedJwtException exception) {
-        log.info(HttpStatus.UNAUTHORIZED.getReasonPhrase());
+        log.error("UnsupportedJwtException: ", exception);
+        log.error(HttpStatus.UNAUTHORIZED.getReasonPhrase());
         return new ResponseEntity<>(RestError.builder()
                 .error(HttpStatus.UNAUTHORIZED.getReasonPhrase())
                 .title(UNAUTHORIZED_MSG)
@@ -122,7 +130,8 @@ public class ExceptionHandlerController {
 
     @ExceptionHandler(NotFoundException.class)
     public ResponseEntity<RestError> noHandlerFoundException(NotFoundException exception) {
-        log.info(HttpStatus.NOT_FOUND.getReasonPhrase());
+        log.error("NotFoundException: ", exception);
+        log.error(HttpStatus.NOT_FOUND.getReasonPhrase());
         return new ResponseEntity<>(RestError.builder()
                 .error(HttpStatus.NOT_FOUND.getReasonPhrase())
                 .title(NOT_FOUND_MSG)
@@ -132,7 +141,8 @@ public class ExceptionHandlerController {
 
     @ExceptionHandler(AlreadyExistException.class)
     public ResponseEntity<RestError> noHandlerFoundException(AlreadyExistException exception) {
-        log.info(HttpStatus.METHOD_NOT_ALLOWED.getReasonPhrase());
+        log.error("AlreadyExistException: ", exception);
+        log.error(HttpStatus.METHOD_NOT_ALLOWED.getReasonPhrase());
         return new ResponseEntity<>(RestError.builder()
                 .error(HttpStatus.METHOD_NOT_ALLOWED.getReasonPhrase())
                 .title(METHOD_NOT_ALLOWED_MSG)
@@ -142,7 +152,8 @@ public class ExceptionHandlerController {
 
     @ExceptionHandler(ValidationException.class)
     public ResponseEntity<RestError> validationException(ValidationException exception) {
-        log.info(HttpStatus.BAD_REQUEST.getReasonPhrase());
+        log.error("ValidationException: ", exception);
+        log.error(HttpStatus.BAD_REQUEST.getReasonPhrase());
         return new ResponseEntity<>(RestError.builder()
                 .error(HttpStatus.BAD_REQUEST.getReasonPhrase())
                 .title(BAD_REQUEST_MSG)
@@ -152,7 +163,8 @@ public class ExceptionHandlerController {
 
     @ExceptionHandler(HttpClientErrorException.class)
     public ResponseEntity<RestError> httpClientErrorException(HttpClientErrorException exception) {
-        log.info(HttpStatus.BAD_REQUEST.getReasonPhrase());
+        log.error("HttpClientErrorException: ", exception);
+        log.error(HttpStatus.BAD_REQUEST.getReasonPhrase());
         return new ResponseEntity<>(RestError.builder()
                 .error(HttpStatus.BAD_REQUEST.getReasonPhrase())
                 .title(BAD_REQUEST_MSG)
@@ -162,7 +174,8 @@ public class ExceptionHandlerController {
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<RestError> httpClientErrorException(MethodArgumentNotValidException exception) {
-        log.info(HttpStatus.BAD_REQUEST.getReasonPhrase());
+        log.error("MethodArgumentNotValidException: ", exception);
+        log.error(HttpStatus.BAD_REQUEST.getReasonPhrase());
         return new ResponseEntity<>(RestError.builder()
                 .error(HttpStatus.BAD_REQUEST.getReasonPhrase())
                 .title(BAD_REQUEST_MSG)
@@ -175,7 +188,8 @@ public class ExceptionHandlerController {
 
     @ExceptionHandler(MethodArgumentTypeMismatchException.class)
     public ResponseEntity<RestError> httpClientErrorException(MethodArgumentTypeMismatchException exception) {
-        log.info(HttpStatus.BAD_REQUEST.getReasonPhrase());
+        log.error("MethodArgumentTypeMismatchException: ", exception);
+        log.error(HttpStatus.BAD_REQUEST.getReasonPhrase());
         return new ResponseEntity<>(RestError.builder()
                 .error(HttpStatus.BAD_REQUEST.getReasonPhrase())
                 .title(BAD_REQUEST_MSG)
@@ -186,7 +200,8 @@ public class ExceptionHandlerController {
 
     @ExceptionHandler(InternalException.class)
     public ResponseEntity<RestError> httpClientErrorException(InternalException exception) {
-        log.info(HttpStatus.INTERNAL_SERVER_ERROR.getReasonPhrase());
+        log.error("InternalException: ", exception);
+        log.error(HttpStatus.INTERNAL_SERVER_ERROR.getReasonPhrase());
         return new ResponseEntity<>(RestError.builder()
                 .error(HttpStatus.INTERNAL_SERVER_ERROR.getReasonPhrase())
                 .title(INTERNAL_SERVER_ERROR_MSG)
@@ -196,7 +211,8 @@ public class ExceptionHandlerController {
 
     @ExceptionHandler(Exception.class)
     public ResponseEntity<RestError> httpClientErrorException(Exception exception) {
-        log.info(HttpStatus.INTERNAL_SERVER_ERROR.getReasonPhrase());
+        log.error("Exception: ", exception);
+        log.error(HttpStatus.INTERNAL_SERVER_ERROR.getReasonPhrase());
         return new ResponseEntity<>(RestError.builder()
                 .error(HttpStatus.INTERNAL_SERVER_ERROR.getReasonPhrase())
                 .title(INTERNAL_SERVER_ERROR_MSG)
@@ -206,7 +222,8 @@ public class ExceptionHandlerController {
 
     @ExceptionHandler(FeignException.class)
     public ResponseEntity<RestError> httpClientErrorException(FeignException exception) {
-        log.info(HttpStatus.valueOf(exception.status()).getReasonPhrase());
+        log.error("FeignException: ", exception);
+        log.error(HttpStatus.valueOf(exception.status()).getReasonPhrase());
         return new ResponseEntity<>(RestError.builder()
                 .error(String.valueOf(exception.status()))
                 .title(HttpStatus.valueOf(exception.status()).getReasonPhrase())

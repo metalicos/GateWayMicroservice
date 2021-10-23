@@ -5,7 +5,7 @@ import lombok.Data;
 
 @Data
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class ChangeUsernameDto {
-    private String oldUsername;
-    private String newUsername;
+public class ChangeEmailDto {
+    private String oldEmail;
+    private String newEmail;
 }

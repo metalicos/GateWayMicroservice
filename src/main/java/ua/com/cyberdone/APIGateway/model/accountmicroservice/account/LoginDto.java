@@ -6,6 +6,6 @@ import lombok.Data;
 @Data
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class LoginDto {
-    private String email;
+    private String username;
     private String password;
 }

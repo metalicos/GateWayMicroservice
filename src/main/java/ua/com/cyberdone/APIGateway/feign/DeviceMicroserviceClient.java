@@ -6,7 +6,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -35,8 +34,8 @@ public interface DeviceMicroserviceClient {
             @RequestParam Integer limit);
 
     @DeleteMapping("/hydroponic/calibration-data")
-    ResponseEntity<Void> deleteCalibrationDataInDeviceWithUUID(@RequestHeader("Authorization") String token,
-                                                               @RequestParam Long id);
+    ResponseEntity<Void> deleteCalibrationDataInDeviceWithId(@RequestHeader("Authorization") String token,
+                                                             @RequestParam Long id);
 
     @GetMapping("/hydroponic/data/last")
     ResponseEntity<List<HydroponicDataDto>> getLastDataInDeviceWithUUID(
@@ -68,17 +67,17 @@ public interface DeviceMicroserviceClient {
     ResponseEntity<String> updateTime(@RequestHeader("Authorization") String token,
                                       @RequestParam String uuid, @RequestParam String value);
 
-    @PostMapping("/update/pumps/phUp/{direction}")
+    @PostMapping("/update/pumps/phUp")
     ResponseEntity<String> updatePhUpPumpStatus(@RequestHeader("Authorization") String token,
-                                                @RequestParam String uuid, @PathVariable String direction);
+                                                @RequestParam String uuid, @RequestParam String value);
 
-    @PostMapping("/update/pumps/phDown/{direction}")
+    @PostMapping("/update/pumps/phDown")
     ResponseEntity<String> updatePhDownPumpStatus(@RequestHeader("Authorization") String token,
-                                                  @RequestParam String uuid, @PathVariable String direction);
+                                                  @RequestParam String uuid, @RequestParam String value);
 
-    @PostMapping("/update/pumps/tds/{direction}")
-    public ResponseEntity<String> updateTdsPumpStatus(@RequestHeader("Authorization") String token,
-                                                      @RequestParam String uuid, @PathVariable String direction);
+    @PostMapping("/update/pumps/tds")
+    ResponseEntity<String> updateTdsPumpStatus(@RequestHeader("Authorization") String token,
+                                               @RequestParam String uuid, @RequestParam String value);
 
     @PostMapping("/update/restart")
     ResponseEntity<String> restart(@RequestHeader("Authorization") String token,
@@ -164,9 +163,13 @@ public interface DeviceMicroserviceClient {
     ResponseEntity<String> updateDispensersEnable(@RequestHeader("Authorization") String token,
                                                   @RequestParam String uuid, @RequestParam String value);
 
-    @GetMapping
+    @GetMapping("/metadata")
     ResponseEntity<DeviceMetadataDto> getMetadataByUuid(@RequestHeader("Authorization") String token,
                                                         @RequestParam String uuid);
+
+    @GetMapping("/metadata/list")
+    ResponseEntity<List<DeviceMetadataDto>> getMetadataByUser(@RequestHeader("Authorization") String token,
+                                                              @RequestParam Long userId);
 
     @PostMapping("/metadata")
     ResponseEntity<String> updateMetadata(@RequestHeader("Authorization") String token,
@@ -188,9 +191,9 @@ public interface DeviceMicroserviceClient {
     ResponseEntity<String> linkDevice(@RequestHeader("Authorization") String token,
                                       @RequestParam String uuid, @RequestParam Long userId);
 
-    @GetMapping("/schedules/{key}")
+    @GetMapping("/schedules")
     ResponseEntity<List<RegularScheduleDto>> getSchedulesByKey(@RequestHeader("Authorization") String token,
-                                                               @RequestParam String uuid, @PathVariable String key);
+                                                               @RequestParam String uuid, @RequestParam String key);
 
     @PostMapping("/schedules")
     ResponseEntity<String> createSchedule(@RequestHeader("Authorization") String token,
@@ -200,7 +203,7 @@ public interface DeviceMicroserviceClient {
     ResponseEntity<String> updateScheduleMetaInfo(@RequestHeader("Authorization") String token,
                                                   @RequestBody RegularScheduleUpdateDto schedule);
 
-    @DeleteMapping("/schedules/{id}")
+    @DeleteMapping("/schedules")
     ResponseEntity<String> deleteScheduleById(@RequestHeader("Authorization") String token,
-                                              @PathVariable Long id);
+                                              @RequestParam Long id);
 }

@@ -14,4 +14,5 @@ public class DeviceMetadataDto {
     private String description;
     private DeviceType deviceType;
     private Boolean accessEnabled;
+    private Long userId;
 }

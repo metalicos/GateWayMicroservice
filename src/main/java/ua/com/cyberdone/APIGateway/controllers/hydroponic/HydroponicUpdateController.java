@@ -5,7 +5,6 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
@@ -51,30 +50,30 @@ public class HydroponicUpdateController {
         return ResponseEntity.ok("OK");
     }
 
-    @PostMapping("/pumps/phUp/{direction}")
+    @PostMapping("/pumps/phUp")
     @Operation(summary = "Керувати насосом PH UP у пристрої гідропоніки")
 
-    public ResponseEntity<String> updatePhUpPumpStatus(@RequestParam String uuid, @PathVariable String direction,
+    public ResponseEntity<String> updatePhUpPumpStatus(@RequestParam String uuid, @RequestParam String value,
                                                        @RequestHeader("Authorization") String token) {
-        deviceMicroserviceClient.updatePhUpPumpStatus(token, uuid, direction);
+        deviceMicroserviceClient.updatePhUpPumpStatus(token, uuid, value);
         return ResponseEntity.ok("OK");
     }
 
-    @PostMapping("/pumps/phDown/{direction}")
+    @PostMapping("/pumps/phDown")
     @Operation(summary = "Керувати насосом PH DOWN у пристрої гідропоніки")
 
-    public ResponseEntity<String> updatePhDownPumpStatus(@RequestParam String uuid, @PathVariable String direction,
+    public ResponseEntity<String> updatePhDownPumpStatus(@RequestParam String uuid, @RequestParam String value,
                                                          @RequestHeader("Authorization") String token) {
-        deviceMicroserviceClient.updatePhDownPumpStatus(token, uuid, direction);
+        deviceMicroserviceClient.updatePhDownPumpStatus(token, uuid, value);
         return ResponseEntity.ok("OK");
     }
 
-    @PostMapping("/pumps/tds/{direction}")
+    @PostMapping("/pumps/tds")
     @Operation(summary = "Керувати насосом TDS у пристрої гідропоніки")
 
-    public ResponseEntity<String> updateTdsPumpStatus(@RequestParam String uuid, @PathVariable String direction,
+    public ResponseEntity<String> updateTdsPumpStatus(@RequestParam String uuid, @RequestParam String value,
                                                       @RequestHeader("Authorization") String token) {
-        deviceMicroserviceClient.updateTdsPumpStatus(token, uuid, direction);
+        deviceMicroserviceClient.updateTdsPumpStatus(token, uuid, value);
         return ResponseEntity.ok("OK");
     }
 

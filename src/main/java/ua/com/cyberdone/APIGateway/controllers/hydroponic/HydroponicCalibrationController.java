@@ -36,7 +36,7 @@ public class HydroponicCalibrationController {
     @Operation(summary = "Видалити дані калібрування гідропоніки за ідентифікатором")
     public ResponseEntity<Void> deleteCalibrationDataInDeviceWithUUID(@RequestHeader("Authorization") String token,
                                                                       @RequestParam Long id) {
-        deviceMicroserviceClient.deleteCalibrationDataInDeviceWithUUID(token, id);
+        deviceMicroserviceClient.deleteCalibrationDataInDeviceWithId(token, id);
         return ResponseEntity.ok().build();
     }
 }

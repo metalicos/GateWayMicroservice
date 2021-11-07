@@ -8,7 +8,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
@@ -29,11 +28,11 @@ import java.util.List;
 public class ScheduleController {
     private final DeviceMicroserviceClient deviceMicroserviceClient;
 
-    @GetMapping("/{key}")
+    @GetMapping
     @Operation(summary = "Отримати регулярні події за ключем")
     public ResponseEntity<List<RegularScheduleDto>> getSchedulesByKey(@RequestHeader("Authorization") String token,
                                                                       @RequestParam String uuid,
-                                                                      @PathVariable String key) {
+                                                                      @RequestParam String key) {
         return deviceMicroserviceClient.getSchedulesByKey(token, uuid, key);
     }
 
@@ -52,11 +51,11 @@ public class ScheduleController {
         return deviceMicroserviceClient.updateScheduleMetaInfo(token, schedule);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping
     @Operation(summary = "Видалити регулярну подію за її ідентифікатором")
 
     public ResponseEntity<String> deleteScheduleById(@RequestHeader("Authorization") String token,
-                                                     @PathVariable Long id) {
+                                                     @RequestParam Long id) {
         return deviceMicroserviceClient.deleteScheduleById(token, id);
     }
 }

@@ -17,6 +17,8 @@ import ua.com.cyberdone.APIGateway.feign.DeviceMicroserviceClient;
 import ua.com.cyberdone.APIGateway.model.devicemicroservice.DeviceMetadataDto;
 import ua.com.cyberdone.APIGateway.model.devicemicroservice.DeviceType;
 
+import java.util.List;
+
 
 @Slf4j
 @RestController
@@ -31,6 +33,12 @@ public class DeviceMetadataController {
     public ResponseEntity<DeviceMetadataDto> getMetadataByUuid(@RequestHeader("Authorization") String token,
                                                                @RequestParam String uuid) {
         return deviceMicroserviceClient.getMetadataByUuid(token, uuid);
+    }
+
+    @GetMapping("/list")
+    public ResponseEntity<List<DeviceMetadataDto>> getMetadataByUser(@RequestHeader("Authorization") String token,
+                                                                     @RequestParam Long userId) {
+        return deviceMicroserviceClient.getMetadataByUser(token, userId);
     }
 
     @PostMapping

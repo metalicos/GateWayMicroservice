@@ -5,14 +5,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestHeader;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import ua.com.cyberdone.APIGateway.feign.DeviceMicroserviceClient;
 import ua.com.cyberdone.APIGateway.model.devicemicroservice.DeviceMetadataDto;
 import ua.com.cyberdone.APIGateway.model.devicemicroservice.DeviceType;
@@ -43,6 +36,13 @@ public class DeviceMetadataController {
 
     @PostMapping
     @Operation(summary = "Створити метадані для пристрою")
+    ResponseEntity<String> createMetadata(@RequestHeader("Authorization") String token,
+                                          @RequestBody DeviceMetadataDto metadataDto){
+        return deviceMicroserviceClient.createMetadata(token, metadataDto);
+    }
+
+    @PatchMapping
+    @Operation(summary = "Обновити метадані пристрою")
     public ResponseEntity<String> updateMetadata(@RequestHeader("Authorization") String token,
                                                  @RequestParam String uuid, @RequestParam String name,
                                                  @RequestParam String description) {

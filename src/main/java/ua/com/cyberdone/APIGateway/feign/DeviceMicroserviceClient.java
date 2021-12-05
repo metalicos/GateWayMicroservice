@@ -172,6 +172,10 @@ public interface DeviceMicroserviceClient {
                                                               @RequestParam Long userId);
 
     @PostMapping("/metadata")
+    ResponseEntity<String> createMetadata(@RequestHeader("Authorization") String token,
+                                          @RequestBody DeviceMetadataDto metadataDto);
+
+    @PatchMapping("/metadata")
     ResponseEntity<String> updateMetadata(@RequestHeader("Authorization") String token,
                                           @RequestParam String uuid, @RequestParam String name,
                                           @RequestParam String description);

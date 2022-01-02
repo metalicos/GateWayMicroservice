@@ -37,7 +37,7 @@ public class DeviceMetadataController {
     @PostMapping
     @Operation(summary = "Створити метадані для пристрою")
     ResponseEntity<String> createMetadata(@RequestHeader("Authorization") String token,
-                                          @RequestBody DeviceMetadataDto metadataDto){
+                                          @RequestBody DeviceMetadataDto metadataDto) {
         return deviceMicroserviceClient.createMetadata(token, metadataDto);
     }
 
